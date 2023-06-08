@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:16:35 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:22:03 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Contact
 {
 private:
-	static unsigned int	lastOrdinal;
+	// static unsigned int	lastOrdinal;
 	unsigned int		ordinal;
 	std::string			firstName;
 	std::string			lastName;

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:15:48 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:22:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Contact::Contact()
 {
-	this->ordinal = this->lastOrdinal;
-	++this->lastOrdinal;
+	// this->ordinal = this->lastOrdinal;
+	// ++this->lastOrdinal;
 	this->firstName = std::string("");
 	this->lastName = std::string("");
 	this->nickName = std::string("");
@@ -30,8 +30,8 @@ Contact::~Contact()
 Contact::Contact(std::string name, std::string lastName, std::string nickName,
 				 std::string phoneNumber, std::string darkestSecret)
 {
-	this->ordinal = this->lastOrdinal;
-	++this->lastOrdinal;
+	// this->ordinal = this->lastOrdinal;
+	// ++this->lastOrdinal;
 	this->firstName = name;
 	this->lastName = lastName;
 	this->nickName = nickName;
