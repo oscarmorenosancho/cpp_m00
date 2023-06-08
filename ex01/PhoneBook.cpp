@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:34 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 13:11:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:36:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PhoneBook::~PhoneBook()
 {
 }
 
-Contact*	PhoneBook::SearchContact(string name)
+Contact*	PhoneBook::searchContact(std::string name)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ Contact*	PhoneBook::SearchContact(string name)
 	return (nullptr);
 }
 
-void		PhoneBook::DisplayContacts(void)
+void		PhoneBook::displayContacts(void)
 {
 	
 }

@@ -6,32 +6,33 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 13:09:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:35:22 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 # include <string>
-using namespace std;
+# include <iostream>
 
 class Contact
 {
 private:
 	static unsigned int	lastOrdinal;
 	unsigned int		ordinal;
-	string				name;
-	string				lastName;
-	string				nickName;
-	string				phoneNumber;
-	string				darkestSecret;
+	std::string			name;
+	std::string			lastName;
+	std::string			nickName;
+	std::string			phoneNumber;
+	std::string			darkestSecret;
 
 public:
 	Contact();
-	Contact(string name, string lastName, string nickName, string phoneNumber,
-			string darkestSecret);
+	Contact(std::string name, std::string lastName, std::string nickName, 
+			std::string phoneNumber, std::string darkestSecret);
 	~Contact();
-	bool isName(string name);
+	bool 	isName(std::string name);
+	std::ostream& Contact::operator<<(std::ostream& os);
 };
 
 #endif
