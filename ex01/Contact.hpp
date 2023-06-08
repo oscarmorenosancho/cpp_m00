@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:07:22 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:16:35 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CONTACT_HPP
 # include <string>
 # include <iostream>
-#include <iomanip>+
+# include <iomanip>
 
 class Contact
 {
@@ -31,12 +31,12 @@ public:
 	Contact();
 	Contact(std::string name, std::string lastName, std::string nickName, 
 			std::string phoneNumber, std::string darkestSecret);
-	Contact(const Contact& contact);
-	Contact& Contact::operator=(const Contact& b);
+	Contact(const Contact& b);
+	Contact& operator=(const Contact& b);
 	~Contact();
 	bool 	isName(std::string name);
-	std::ostream& Contact::print(std::ostream& os, int row);
-	std::ostream& Contact::print(std::ostream& os);
+	std::ostream& print(std::ostream& os, int row);
+	std::ostream& print(std::ostream& os);
 };
 
 #endif

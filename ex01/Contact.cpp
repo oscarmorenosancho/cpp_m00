@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:07:01 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:15:48 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,24 @@ Contact::Contact(std::string name, std::string lastName, std::string nickName,
 	this->darkestSecret = darkestSecret;
 }
 
-Contact::Contact(const Contact &contact)
+Contact::Contact(const Contact &b)
 {
-	this->ordinal =  contact.ordinal;
-	this->firstName = contact.firstName;
-	this->lastName = contact.lastName;
-	this->nickName = contact.nickName;
-	this->phoneNumber = contact.phoneNumber;
-	this->darkestSecret = contact.darkestSecret;
+	this->ordinal =  b.ordinal;
+	this->firstName = b.firstName;
+	this->lastName = b.lastName;
+	this->nickName = b.nickName;
+	this->phoneNumber = b.phoneNumber;
+	this->darkestSecret = b.darkestSecret;
 }
 
-Contact& Contact::operator=(const Contact& contact)
+Contact& Contact::operator=(const Contact& b)
 {
-	this->ordinal =  contact.ordinal;
-	this->firstName = contact.firstName;
-	this->lastName = contact.lastName;
-	this->nickName = contact.nickName;
-	this->phoneNumber = contact.phoneNumber;
-	this->darkestSecret = contact.darkestSecret;
+	this->ordinal =  b.ordinal;
+	this->firstName = b.firstName;
+	this->lastName = b.lastName;
+	this->nickName = b.nickName;
+	this->phoneNumber = b.phoneNumber;
+	this->darkestSecret = b.darkestSecret;
 	return (*this);
 }
 
