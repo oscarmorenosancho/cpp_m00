@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:22:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:29:42 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,17 @@ std::ostream& Contact::print(std::ostream& os, int index)
 	os << std::setfill (' ');
 	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
 	os << index << "|";
+	os << std::setw(10); 
+	os << std::setfill (' ');
+	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
 	os << this->firstName << "|";
+	os << std::setw(10); 
+	os << std::setfill (' ');
+	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
 	os << this->lastName << "|";
+	os << std::setw(10); 
+	os << std::setfill (' ');
+	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
 	os << this->nickName;
 	os << std::endl;
 	return	(os);
