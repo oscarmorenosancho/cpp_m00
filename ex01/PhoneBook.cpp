@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:34 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:36:28 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:50:54 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,22 @@ Contact*	PhoneBook::searchContact(std::string name)
 	return (nullptr);
 }
 
-void		PhoneBook::displayContacts(void)
+void		PhoneBook::displayContacts(std::ostream& os)
 {
-	
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		contactArray[i].print(os, i); 
+		i++;
+	}	
 }
+
+void		PhoneBook::displayContact(std::ostream& os, int index)
+	{
+		if (index >= 0 && index <=8)
+		{
+			contactArray[index].print(os); 
+		}
+	}

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:35:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:07:01 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ Contact::Contact()
 {
 	this->ordinal = this->lastOrdinal;
 	++this->lastOrdinal;
-	this->name = std::string("");
+	this->firstName = std::string("");
 	this->lastName = std::string("");
 	this->nickName = std::string("");
 	this->phoneNumber = std::string("");
 	this->darkestSecret = std::string("");
+}
+
+Contact::~Contact()
+{
 }
 
 Contact::Contact(std::string name, std::string lastName, std::string nickName,
@@ -28,29 +32,59 @@ Contact::Contact(std::string name, std::string lastName, std::string nickName,
 {
 	this->ordinal = this->lastOrdinal;
 	++this->lastOrdinal;
-	this->name = name;
+	this->firstName = name;
 	this->lastName = lastName;
 	this->nickName = nickName;
 	this->phoneNumber = phoneNumber;
 	this->darkestSecret = darkestSecret;
 }
 
-Contact::~Contact()
+Contact::Contact(const Contact &contact)
 {
+	this->ordinal =  contact.ordinal;
+	this->firstName = contact.firstName;
+	this->lastName = contact.lastName;
+	this->nickName = contact.nickName;
+	this->phoneNumber = contact.phoneNumber;
+	this->darkestSecret = contact.darkestSecret;
+}
+
+Contact& Contact::operator=(const Contact& contact)
+{
+	this->ordinal =  contact.ordinal;
+	this->firstName = contact.firstName;
+	this->lastName = contact.lastName;
+	this->nickName = contact.nickName;
+	this->phoneNumber = contact.phoneNumber;
+	this->darkestSecret = contact.darkestSecret;
+	return (*this);
 }
 
 bool Contact::isName(std::string name)
 {
-	return (this->name == name);
+	return (this->firstName == name);
 }
 
-std::ostream& Contact::operator<<(std::ostream& os)
+std::ostream& Contact::print(std::ostream& os, int index)
 {
-    os << this->name << "|";
-    os << this->lastName << "|";
-	os << this->nickName << "|";
-	os << this->phoneNumber << "|";
-	os << this->darkestSecret;
+	os << std::setw(10); 
+	os << std::setfill (' ');
+	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
+	os << index << "|";
+	os << this->firstName << "|";
+	os << this->lastName << "|";
+	os << this->nickName;
 	os << std::endl;
-    return	(os);
+	return	(os);
+}
+
+std::ostream& Contact::print(std::ostream& os)
+{
+	os << "First Name:     " << this->firstName << std::endl;
+	os << "Last Name:      " << this->lastName << std::endl;
+	os << "Nickname:       " << this->nickName << std::endl;
+	os << "Phone Number:   " << this->phoneNumber << std::endl;
+	os << "Darkest Secret: " << this->darkestSecret << std::endl;
+	os << std::endl;
+	return	(os);
 }
