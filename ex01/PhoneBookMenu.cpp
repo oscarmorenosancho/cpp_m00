@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:55:56 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 13:11:59 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:16:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,16 @@ void	PhoneBookMenu::showMainMenu(std::ostream& os)
 
 int		PhoneBookMenu::waitMainCommand(std::istream& is)
 {
-	(void)is;
-	return (0);
+	std::string	command;
+
+	is >> command;
+	if (command == "EXIT")
+		return (0);
+	if (command == "ADD")
+		return (1);
+	if (command == "SEARCH")
+		return (2);
+	return (-1);
 }
 
 void	PhoneBookMenu::openAddForm(std::istream& is, std::ostream& os)
@@ -48,10 +56,35 @@ void	PhoneBookMenu::showSearchMenu(std::ostream& os)
 	os << "> ";
 }
 
-int		PhoneBookMenu::waitIndex(std::istream& is)
+int		PhoneBookMenu::getInt(std::istream& is)
 {
-	(void)is;
-	return (0);
+	int			value;
+	std::string	inputVal;
+
+	is >> inputVal;
+	try
+	{
+		value = std::stoi(inputVal);
+	}
+	catch(...)
+	{
+		value = -1;
+	}
+	return (value);
+}
+
+int		PhoneBookMenu::waitIndex(std::istream& is, std::ostream& os)
+{
+	int			index;
+
+	index = getInt(is);
+	while (index < 0 || index > 7)
+	{
+		os << "Invalid index, try again." << std::endl;
+		os << "> ";
+		index = getInt(is);
+	}
+	return (index);
 }
 
 void	PhoneBookMenu::menuLoop(std::istream& is, std::ostream& os)
@@ -69,7 +102,7 @@ void	PhoneBookMenu::menuLoop(std::istream& is, std::ostream& os)
 		else if (cmd == 2)
 		{
 			showSearchMenu(os);
-			phoneBook.displayContact(os, waitIndex(is));
+			phoneBook.displayContact(os, waitIndex(is, os));
 		}
 		else
 		{
