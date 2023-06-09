@@ -2,18 +2,29 @@ NAME:= megaphone
 
 SRC:= megaphone.cpp
 
-CC	:= 	c++
+OBJ := $(SRC:.cpp=.o)
+
+CC	:= 	@c++
+RM	= 	@rm -f
 CFLAGS := -Wall -Werror -Wextra -std=c++98
 
 all : $(NAME)
 
-$(NAME) : ${SRC}
+%.o : %.cpp Makefile
+	@echo "Compiling" $@
+	${CC} ${CFLAGS} -c $< -o $@
+
+$(NAME) : ${OBJ} Makefile
+	@echo "Linking" $@
 	${CC} ${CFLAGS} ${SRC} -o $@
+
 clean :
 	$(RM) $(OBJ)
+	@echo "Cleaned objects"
 
 fclean : clean
 	$(RM) $(NAME)
+	@echo "Cleaned executable"
 
 re: fclean all
 

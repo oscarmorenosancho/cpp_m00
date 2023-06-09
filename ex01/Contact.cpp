@@ -6,100 +6,112 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 11:41:43 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:47:35 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+unsigned int Contact::_lastOrdinal = 0;
+
 Contact::Contact()
 {
-	// this->ordinal = this->lastOrdinal;
-	// ++this->lastOrdinal;
-	this->firstName = std::string("");
-	this->lastName = std::string("");
-	this->nickName = std::string("");
-	this->phoneNumber = std::string("");
-	this->darkestSecret = std::string("");
+	_ordinal = _lastOrdinal;
+	++_lastOrdinal;
+	_firstName = std::string("");
+	_lastName = std::string("");
+	_nickName = std::string("");
+	_phoneNumber = std::string("");
+	_darkestSecret = std::string("");
 }
 
 Contact::~Contact()
 {
 }
 
-Contact::Contact(std::string name, std::string lastName, std::string nickName,
+Contact::Contact(std::string firstName, std::string lastName, std::string nickName,
 				 std::string phoneNumber, std::string darkestSecret)
 {
-	// this->ordinal = this->lastOrdinal;
-	// ++this->lastOrdinal;
-	this->firstName = name;
-	this->lastName = lastName;
-	this->nickName = nickName;
-	this->phoneNumber = phoneNumber;
-	this->darkestSecret = darkestSecret;
+	_ordinal = _lastOrdinal;
+	++_lastOrdinal;
+	_firstName = firstName;
+	_lastName = lastName;
+	_nickName = nickName;
+	_phoneNumber = phoneNumber;
+	_darkestSecret = darkestSecret;
 }
 
 Contact::Contact(const Contact &b)
 {
-	this->ordinal =  b.ordinal;
-	this->firstName = b.firstName;
-	this->lastName = b.lastName;
-	this->nickName = b.nickName;
-	this->phoneNumber = b.phoneNumber;
-	this->darkestSecret = b.darkestSecret;
+	_ordinal =  b._ordinal;
+	_firstName = b._firstName;
+	_lastName = b._lastName;
+	_nickName = b._nickName;
+	_phoneNumber = b._phoneNumber;
+	_darkestSecret = b._darkestSecret;
 }
 
 Contact& Contact::operator=(const Contact& b)
 {
-	this->ordinal =  b.ordinal;
-	this->firstName = b.firstName;
-	this->lastName = b.lastName;
-	this->nickName = b.nickName;
-	this->phoneNumber = b.phoneNumber;
-	this->darkestSecret = b.darkestSecret;
+	_ordinal =  b._ordinal;
+	_firstName = b._firstName;
+	_lastName = b._lastName;
+	_nickName = b._nickName;
+	_phoneNumber = b._phoneNumber;
+	_darkestSecret = b._darkestSecret;
 	return (*this);
 }
 
-bool Contact::isName(std::string name)
+bool Contact::isName(std::string firstName)
 {
-	return (this->firstName == name);
+	return (this->_firstName == firstName);
 }
 
 unsigned int	Contact::getOrdinal()
 {
-	return (this->ordinal);
+	return (_ordinal);
 }
 
 
+std::ostream& Contact::printTrim(std::ostream& os, std::string field)
+{
+	if (field.length() < 11)
+	{
+		os << std::setfill (' ');
+		os << std::setw(10); 
+		std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
+		os << field;
+	}
+	else
+	{
+		os << field.substr(0, 9) << ".";
+	}
+	os << std::setw(1) << "|"; 
+	return (os);
+}
+
 std::ostream& Contact::print(std::ostream& os, int index)
 {
+	os << std::setw(1) << "|"; 
 	os << std::setw(10); 
 	os << std::setfill (' ');
 	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
-	os << index << "|";
-	os << std::setw(10); 
-	os << std::setfill (' ');
-	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
-	os << this->firstName << "|";
-	os << std::setw(10); 
-	os << std::setfill (' ');
-	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
-	os << this->lastName << "|";
-	os << std::setw(10); 
-	os << std::setfill (' ');
-	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
-	os << this->nickName;
+	os << index;
+	os << std::setw(1) << "|"; 
+	printTrim(os, _firstName);
+	printTrim(os, _lastName);
+	printTrim(os, _nickName);
 	os << std::endl;
 	return	(os);
 }
 
 std::ostream& Contact::print(std::ostream& os)
 {
-	os << "First Name:     " << this->firstName << std::endl;
-	os << "Last Name:      " << this->lastName << std::endl;
-	os << "Nickname:       " << this->nickName << std::endl;
-	os << "Phone Number:   " << this->phoneNumber << std::endl;
-	os << "Darkest Secret: " << this->darkestSecret << std::endl;
+	os << "First Name:     " << _firstName << std::endl;
+	os << "Last Name:      " << _lastName << std::endl;
+	os << "Nickname:       " << _nickName << std::endl;
+	os << "Phone Number:   " << _phoneNumber << std::endl;
+	os << "Darkest Secret: " << _darkestSecret << std::endl;
 	os << std::endl;
 	return	(os);
 }
