@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:29:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:41:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ bool Contact::isName(std::string name)
 {
 	return (this->firstName == name);
 }
+
+unsigned int	Contact::getOrdinal()
+{
+	return (this->ordinal);
+}
+
 
 std::ostream& Contact::print(std::ostream& os, int index)
 {

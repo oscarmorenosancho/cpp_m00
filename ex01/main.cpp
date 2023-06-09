@@ -6,16 +6,16 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:38 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 18:28:56 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:08:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "PhoneBookMenu.hpp"
 
 int main(void)
 {
-	PhoneBook phoneBook;
+	PhoneBookMenu phoneBookMenu;
 
-	phoneBook.displayContacts(std::cout);
-	return 0;
+	phoneBookMenu.menuLoop(std::cin, std::cout);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:34 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/08 17:50:54 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:09:41 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ PhoneBook::~PhoneBook()
 {
 }
 
+PhoneBook& 	PhoneBook::operator=(PhoneBook& b)
+{
+	return (b);
+}
+
+
 Contact*	PhoneBook::searchContact(std::string name)
 {
 	int	i;
@@ -32,6 +38,37 @@ Contact*	PhoneBook::searchContact(std::string name)
 		i++;
 	}
 	return (nullptr);
+}
+
+int	PhoneBook::AddContact(Contact& contact)
+{
+	unsigned int	index;
+
+	index = searchOldestContact();
+	contactArray[index] = contact;
+	return (index);
+}
+
+unsigned int	PhoneBook::searchOldestContact()
+{
+	unsigned int	i;
+	unsigned int	oldest;
+	unsigned int oldestOrdinal;
+
+	oldest = 0;
+	oldestOrdinal = contactArray[0].getOrdinal();
+	i = 1;
+	while (i < 8)
+	{
+		unsigned int curOrdinal = contactArray[i].getOrdinal();
+		if (curOrdinal < oldestOrdinal)
+		{
+			oldestOrdinal = curOrdinal;
+			oldest = 1;
+		}
+		i++;
+	}
+	return (oldest);
 }
 
 void		PhoneBook::displayContacts(std::ostream& os)
