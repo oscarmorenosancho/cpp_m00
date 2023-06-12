@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:26:29 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:11:23 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class Contact
 {
 private:
+	static unsigned int	_lastOrdinal;
 	unsigned int		_ordinal;
 	std::string			_firstName;
 	std::string			_lastName;
@@ -27,7 +28,6 @@ private:
 	std::string			_darkestSecret;
 
 public:
-	static unsigned int	_lastOrdinal;
 	Contact();
 	~Contact();
 	Contact(std::string name, std::string lastName, std::string nickName, 
