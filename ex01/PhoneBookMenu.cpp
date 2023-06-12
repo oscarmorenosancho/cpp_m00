@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:55:56 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 15:51:48 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:02:13 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,28 @@ std::string	PhoneBookMenu::getField(std::istream& is, std::ostream& os,
 								 std::string fieldName)
 {
 	std::string	inputVal;
+	std::string line;
 
 	os << fieldName << ": > ";
 	is >> inputVal;
-	is.ignore(1000,'\n');
+	std::getline(is, line);
+	inputVal += line; 
+	return (inputVal);
+}
+
+std::string	PhoneBookMenu::getPhoneNb(std::istream& is, std::ostream& os,
+						std::string fieldName)
+{
+	int			value;
+	std::string	inputVal = getField(is, os, fieldName);
+	try
+	{
+		value = std::stoi(inputVal);
+	}
+	catch(...)
+	{
+		inputVal = "";
+	}
 	return (inputVal);
 }
 
@@ -62,7 +80,12 @@ void	PhoneBookMenu::openAddForm(std::istream& is, std::ostream& os)
 	std::string	firstName = getField(is, os, "First Name");
 	std::string	lastName = getField(is, os, "Last Name");
 	std::string	nickName = getField(is, os, "Nickname");
-	std::string	phoneNumber = getField(is, os, "Phone Number");
+	std::string	phoneNumber = getPhoneNb(is, os, "Phone Number");
+	while (phoneNumber == "" || phoneNumber.length() != 9)
+	{
+		os << "Invalid phone number, try again" << std::endl;
+		phoneNumber = getPhoneNb(is, os, "Phone Number");
+	}
 	std::string	darkestSecret = getField(is, os, "Darkest Secret");
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	phoneBook.AddContact(contact);
