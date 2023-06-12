@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:21:07 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/12 13:22:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:28:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ Account::~Account( void )
 	std::cout << "index:";
 	std::cout << BLUE << _accountIndex << WHITE;
 	std::cout << ";amount:";
-	std::cout << BLUE << _amount  << WHITE << ";created";
+	std::cout << BLUE << _amount  << WHITE << ";closed";
 	std::cout << std::endl;
 }
 
