@@ -5,16 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/12 11:18:25 by omoreno-          #+#    #+#              #
-#    Updated: 2023/06/12 11:18:26 by omoreno-         ###   ########.fr        #
+#    Created: 2023/06/12 11:18:49 by omoreno-          #+#    #+#              #
+#    Updated: 2023/06/12 11:20:55 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= megaphone
+NAME:= account
 
-SRC:= megaphone.cpp
+SRC:= 	Account.cpp
+
+MAINSRC :=	tests.cpp
 
 OBJ := $(SRC:.cpp=.o)
+HEADER := $(SRC:.cpp=.hpp)
+MAINOBJ := $(MAINSRC:.cpp=.o)
 
 CC	:= 	@c++
 RM	= 	@rm -f
@@ -22,16 +26,17 @@ CFLAGS := -Wall -Werror -Wextra -std=c++98
 
 all : $(NAME)
 
-%.o : %.cpp Makefile
+%.o : %.cpp ${HEADER} Makefile
 	@echo "Compiling" $@
 	${CC} ${CFLAGS} -c $< -o $@
 
-$(NAME) : ${OBJ} Makefile
+$(NAME) : ${OBJ} ${MAINOBJ} ${HEADER} Makefile
 	@echo "Linking" $@
-	${CC} ${CFLAGS} ${SRC} -o $@
+	${CC} ${CFLAGS} ${MAINOBJ} ${OBJ} -o $@
 
 clean :
 	$(RM) $(OBJ)
+	$(RM) $(MAINOBJ)
 	@echo "Cleaned objects"
 
 fclean : clean
