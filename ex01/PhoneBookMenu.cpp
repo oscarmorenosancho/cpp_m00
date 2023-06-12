@@ -6,11 +6,12 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:55:56 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/12 15:02:13 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:27:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBookMenu.hpp"
+#include <regex>
 
 PhoneBookMenu::PhoneBookMenu()
 {
@@ -54,7 +55,10 @@ std::string	PhoneBookMenu::getField(std::istream& is, std::ostream& os,
 	os << fieldName << ": > ";
 	is >> inputVal;
 	std::getline(is, line);
-	inputVal += line; 
+	inputVal += line;
+	inputVal.erase(inputVal.find_last_not_of(" \t\n")+1);
+    inputVal.erase(0, inputVal.find_first_not_of(" \t\n"));
+	inputVal = std::regex_replace(inputVal, std::regex("\t"), " ");
 	return (inputVal);
 }
 
@@ -102,9 +106,12 @@ int		PhoneBookMenu::getInt(std::istream& is)
 {
 	int			value;
 	std::string	inputVal;
+	std::string	line;
 
 	is >> inputVal;
-	is.ignore(1000,'\n');
+	std::getline(is, line);
+	inputVal.erase(inputVal.find_last_not_of(" \t\n")+1);
+    inputVal.erase(0, inputVal.find_first_not_of(" \t\n"));
 	try
 	{
 		value = std::stoi(inputVal);

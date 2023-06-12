@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:44 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:47:35 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:09:42 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,20 @@ std::ostream& Contact::printTrim(std::ostream& os, std::string field)
 	{
 		os << field.substr(0, 9) << ".";
 	}
-	os << std::setw(1) << "|"; 
 	return (os);
 }
 
 std::ostream& Contact::print(std::ostream& os, int index)
 {
-	os << std::setw(1) << "|"; 
 	os << std::setw(10); 
 	os << std::setfill (' ');
 	std::cout.setf (std::ios_base::right , std::ios_base::adjustfield);
 	os << index;
 	os << std::setw(1) << "|"; 
 	printTrim(os, _firstName);
+	os << std::setw(1) << "|"; 
 	printTrim(os, _lastName);
+	os << std::setw(1) << "|"; 
 	printTrim(os, _nickName);
 	os << std::endl;
 	return	(os);
