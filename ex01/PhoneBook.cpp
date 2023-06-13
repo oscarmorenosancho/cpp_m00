@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:19:34 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:41:28 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/06/13 10:05:36 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void		PhoneBook::displayContacts(std::ostream& os)
 {
 	int	i;
 
+	os << "     INDEX| FIRSTNAME|  LASTNAME|  NICKNAME" << std::endl;
 	i = 0;
 	while (i < 8)
 	{
